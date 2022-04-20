@@ -68,7 +68,8 @@ import qualified Pate.Proof.Instances as PPI
 import qualified Pate.SimState as PS
 
 import qualified Pate.Verification.Domain as PVD
-
+import qualified Pate.Verification.AbstractDomain as PAD
+import           Pate.Verification.AbstractDomain ( AbstractDomain )
 
 -- | Gas is used to ensure that our fixpoint computation terminates
 --   in a reasonable amount of time.  Gas is expended each time
@@ -84,11 +85,6 @@ newtype Gas = Gas Word32
 --   Should make this configurable.
 initialGas :: Gas
 initialGas = Gas 5
-
--- | For now, the abstract domains we track are just exactly
---   a 'PE.DomainSpec', but we may change/add to this as we go.
-type AbstractDomain sym arch = PE.DomainSpec sym arch
-
 
 -- | Nodes in the program graph consist either of a pair of
 --   program points (GraphNode), or a synthetic node representing
